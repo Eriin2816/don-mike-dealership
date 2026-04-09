@@ -1,104 +1,125 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/config";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-brand-dark border-t border-white/[0.06]">
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
+    <footer className="bg-[#1E3A5F] text-white">
+      {/* Main footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6" aria-label="Adaptive Automations home">
-              <Image
-                src="/logo.png"
-                alt="Adaptive Automations"
-                width={240}
-                height={72}
-                className="object-contain h-[64px] w-auto"
-              />
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="relative w-[70px] h-[70px] shrink-0 bg-white rounded-xl p-1.5">
+                <Image
+                  src="/logo.png"
+                  alt="Don Mike Auto Dealership logo"
+                  fill
+                  className="object-contain p-0.5"
+                />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-[15px] tracking-wide uppercase text-white">
+                  Don Mike
+                </span>
+                <span className="font-sans text-[10px] tracking-[0.12em] uppercase text-white/60">
+                  Auto Dealership
+                </span>
+              </div>
             </Link>
-            <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
-              Automation-driven marketing systems for high-ticket local service businesses.
-              We build the lead engine that turns traffic into booked appointments.
+            <p className="text-white/70 text-sm leading-relaxed max-w-xs mb-6">
+              Gainesville&apos;s trusted multi-brand dealership. We help local
+              drivers find the right vehicle — without the runaround.
             </p>
-            {/* Contact info */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2.5">
               <a
                 href={siteConfig.business.phoneHref}
-                className="flex items-center gap-3 text-white/50 hover:text-brand-electric text-sm font-medium transition-colors duration-200 group"
+                className="flex items-center gap-2.5 text-white/80 hover:text-white text-sm transition-colors duration-150"
               >
-                <span className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center group-hover:bg-brand-electric/10 transition-colors duration-200">
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#4A7DB5]">
                   <PhoneIcon />
                 </span>
                 {siteConfig.business.phone}
               </a>
               <a
                 href={siteConfig.business.emailHref}
-                className="flex items-center gap-3 text-white/50 hover:text-brand-electric text-sm font-medium transition-colors duration-200 group"
+                className="flex items-center gap-2.5 text-white/80 hover:text-white text-sm transition-colors duration-150"
               >
-                <span className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center group-hover:bg-brand-electric/10 transition-colors duration-200">
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#4A7DB5]">
                   <EmailIcon />
                 </span>
                 {siteConfig.business.email}
               </a>
-              <div className="flex items-center gap-3 text-white/50 text-sm">
-                <span className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center flex-shrink-0">
+              <span className="flex items-center gap-2.5 text-white/70 text-sm">
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#4A7DB5]">
                   <LocationIcon />
                 </span>
-                {siteConfig.business.address}
-              </div>
+                {siteConfig.business.location}
+              </span>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-white/80 text-xs font-semibold uppercase tracking-widest mb-5">
+            <h4 className="font-display font-semibold text-sm tracking-[0.1em] uppercase text-white/50 mb-4">
               Navigation
-            </h3>
-            <ul className="flex flex-col gap-3">
-              {siteConfig.nav.map((item) => (
+            </h4>
+            <ul className="flex flex-col gap-2.5">
+              {siteConfig.footerNav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
-                    className="text-white/45 hover:text-white text-sm transition-colors duration-200"
+                    className="text-white/70 hover:text-white text-sm transition-colors duration-150"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* CTA column */}
+          {/* CTA */}
           <div>
-            <h3 className="text-white/80 text-xs font-semibold uppercase tracking-widest mb-5">
+            <h4 className="font-display font-semibold text-sm tracking-[0.1em] uppercase text-white/50 mb-4">
               Get Started
-            </h3>
-            <p className="text-white/40 text-sm leading-relaxed mb-5">
-              Ready to build a system that converts? Book a free strategy call.
+            </h4>
+            <p className="text-white/70 text-sm leading-relaxed mb-5">
+              A quick call is the best way to find the right vehicle at the
+              right payment. No pressure — just genuine guidance.
             </p>
-            <a
-              href={siteConfig.cta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-brand-electric hover:bg-brand-glow text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors duration-200 shadow-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-glow"
+            <Link
+              href="/book-a-call"
+              className="inline-flex items-center justify-center gap-2 bg-[#1A56DB] hover:bg-[#1547C0] active:bg-[#123DAA] text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors duration-200 shadow-[0_4px_14px_rgba(26,86,219,0.4)] hover:shadow-[0_4px_20px_rgba(26,86,219,0.5)] w-full"
             >
-              {siteConfig.cta.label}
-            </a>
+              Schedule a Call
+            </Link>
           </div>
         </div>
+      </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/25 text-xs">
-            &copy; {currentYear} {siteConfig.business.name}. All rights reserved.
+      {/* Bottom bar */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/40 text-xs">
+            © {new Date().getFullYear()} Don Mike Auto Dealership. All rights
+            reserved.
           </p>
-          <p className="text-white/20 text-xs">
-            Automation-Driven Marketing for Local Businesses
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy-policy"
+              className="text-white/40 hover:text-white/70 text-xs transition-colors duration-150"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-white/20 text-xs">|</span>
+            <Link
+              href="/terms-and-conditions"
+              className="text-white/40 hover:text-white/70 text-xs transition-colors duration-150"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
@@ -107,25 +128,26 @@ export default function Footer() {
 
 function PhoneIcon() {
   return (
-    <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5.05 2 2 0 0 1 3.57 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
     </svg>
   );
 }
 
 function EmailIcon() {
   return (
-    <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="16" x="2" y="4" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
     </svg>
   );
 }
 
 function LocationIcon() {
   return (
-    <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+      <circle cx="12" cy="10" r="3"/>
     </svg>
   );
 }

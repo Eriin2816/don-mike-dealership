@@ -1,98 +1,107 @@
 "use client";
 
 import { useState } from "react";
-import { siteConfig } from "@/lib/config";
+import Link from "next/link";
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+const faqs = [
+  {
+    q: "Do you offer financing for first-time buyers and students?",
+    a: "Yes — we specialize in it. We work with lenders who understand the Gainesville market, including students and early-career buyers building credit. We'll walk you through payment options before anything gets signed.",
+  },
+  {
+    q: "What brands do you carry?",
+    a: "We represent Honda, Toyota, Mazda, GMC, and Mercedes-Benz, plus a curated pre-owned selection that includes other makes. Whether you need a reliable sedan, a family SUV, a workhorse truck, or a luxury vehicle, we have options across price points.",
+  },
+  {
+    q: "How does the free consultation call work?",
+    a: "It's a 20-minute conversation — no commitment, no pitch. We ask about your budget, lifestyle, and what you're driving now. By the end, you'll have a clear picture of which vehicles match your payment target and what your next step looks like.",
+  },
+  {
+    q: "Can I trade in my current vehicle?",
+    a: "Absolutely. We provide transparent trade-in appraisals and help you apply that equity toward your next vehicle. Many Gainesville buyers are surprised by how much equity they have — especially in trucks and SUVs.",
+  },
+  {
+    q: "Do you have pre-owned and CPO options?",
+    a: "Yes. We maintain a strong pre-owned inventory that spans budget-friendly options for students all the way up to certified pre-owned luxury vehicles. We vet every vehicle for quality and present realistic payment estimates upfront.",
+  },
+  {
+    q: "What if I have less-than-perfect credit?",
+    a: "We work with a range of lenders and can often find financing paths that others can't. We'll be honest about what's possible for your situation and help you understand the terms before you commit to anything.",
+  },
+  {
+    q: "How is Don Mike different from the big dealership groups on North Main?",
+    a: "We operate with personal accountability — no corporate layers, no runaround. Our team knows the Gainesville market deeply, and we focus on matching the right vehicle to your real budget rather than maximizing the transaction. Transparent pricing, no hidden fees.",
+  },
+  {
+    q: "What's the fastest way to get started?",
+    a: "Book a free call. It takes under two minutes to schedule, and you'll hear from our team quickly. From there, we move at your pace — no pressure.",
+  },
+];
 
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
+export default function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section
-      id="faq"
-      className="bg-brand-offwhite py-24 px-6"
-      aria-label="Frequently asked questions"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-16">
-          {/* Left: header */}
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-brand-electric text-xs font-semibold uppercase tracking-widest mb-3">
+    <section id="faq" className="bg-[#F8FAFC] py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Left */}
+          <div className="lg:col-span-2">
+            <span className="inline-block text-[#1A56DB] text-xs font-semibold tracking-[0.15em] uppercase mb-3">
               FAQ
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-brand-slate leading-tight tracking-[-0.03em] mb-5">
-              Common questions, answered
+            </span>
+            <h2 className="font-display font-black text-4xl sm:text-5xl text-[#0F172A] tracking-[-0.02em] mb-5">
+              Common questions.
             </h2>
-            <p className="text-brand-graphite text-base leading-[1.75] mb-8">
-              Not sure if this is the right fit or how the process works? These are the
-              questions we hear most often.
+            <p className="text-[#475569] text-base leading-relaxed mb-8">
+              Real answers to the questions Gainesville buyers ask most. If
+              yours isn&apos;t here, the fastest answer is a quick call.
             </p>
-            <a
-              href={siteConfig.cta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-brand-electric hover:text-brand-navy font-semibold text-sm transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-electric rounded"
+            <Link
+              href="/book-a-call"
+              className="inline-flex items-center gap-2 bg-[#1A56DB] hover:bg-[#1547C0] text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors duration-200 shadow-blue"
             >
-              Still have questions? Book a call
-              <svg
-                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+              Ask Us Directly
+            </Link>
           </div>
 
-          {/* Right: accordion */}
-          <div className="flex flex-col divide-y divide-brand-warmgray">
-            {siteConfig.faqs.map((faq, i) => (
-              <div key={i} className="py-5">
+          {/* Right — accordion */}
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden"
+              >
                 <button
-                  className="w-full flex items-start justify-between gap-4 text-left group focus-visible:outline-none"
-                  onClick={() => toggle(i)}
-                  aria-expanded={openIndex === i}
-                  aria-controls={`faq-answer-${i}`}
-                  id={`faq-question-${i}`}
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left group"
+                  aria-expanded={open === i}
                 >
-                  <span
-                    className={`text-sm font-semibold leading-snug transition-colors duration-200 ${
-                      openIndex === i ? "text-brand-electric" : "text-brand-slate group-hover:text-brand-electric"
-                    }`}
-                  >
+                  <span className="font-display font-semibold text-[#1E3A5F] text-base group-hover:text-[#1A56DB] transition-colors duration-150">
                     {faq.q}
                   </span>
                   <span
-                    className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 mt-0.5 ${
-                      openIndex === i
-                        ? "bg-brand-electric text-white rotate-45"
-                        : "bg-brand-warmgray text-brand-graphite"
+                    className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
+                      open === i
+                        ? "bg-[#1A56DB] text-white rotate-45"
+                        : "bg-[#EBF3FF] text-[#1A56DB]"
                     }`}
-                    aria-hidden="true"
                   >
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
+                    <PlusIcon />
                   </span>
                 </button>
 
                 <div
-                  id={`faq-answer-${i}`}
-                  role="region"
-                  aria-labelledby={`faq-question-${i}`}
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === i ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+                  className={`overflow-hidden transition-all duration-300 ${
+                    open === i ? "max-h-64" : "max-h-0"
                   }`}
                 >
-                  <p className="text-brand-graphite text-sm leading-[1.75] pr-10">
-                    {faq.a}
-                  </p>
+                  <div className="px-6 pb-5">
+                    <div className="h-px bg-[#E2E8F0] mb-4" />
+                    <p className="text-[#475569] text-sm leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -100,5 +109,13 @@ export default function FAQ() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
   );
 }

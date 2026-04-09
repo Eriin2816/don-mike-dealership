@@ -1,82 +1,112 @@
-import Image from "next/image";
-import { siteConfig } from "@/lib/config";
+export default function TrustStrip() {
+  const stats = [
+    { value: "5+", label: "Brands Available" },
+    { value: "100%", label: "No-Pressure Promise" },
+    { value: "Local", label: "Gainesville, FL Team" },
+    { value: "Free", label: "Consultation Call" },
+  ];
 
-export default function Trust() {
+  const badges = [
+    {
+      icon: <ShieldIcon />,
+      title: "Family Owned",
+      sub: "Locally trusted in Gainesville",
+    },
+    {
+      icon: <StarIcon />,
+      title: "5-Star Service",
+      sub: "Rated by real local buyers",
+    },
+    {
+      icon: <CheckIcon />,
+      title: "Multi-Brand Selection",
+      sub: "Honda, Toyota, Mazda, GMC & more",
+    },
+    {
+      icon: <KeyIcon />,
+      title: "Drive Home Today",
+      sub: "Streamlined buying experience",
+    },
+  ];
+
   return (
-    <section
-      id="testimonials"
-      className="bg-brand-offwhite py-24 px-6"
-      aria-label="Testimonials"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="max-w-xl mb-14">
-          <p className="text-brand-electric text-xs font-semibold uppercase tracking-widest mb-3">
-            What Clients Say
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-brand-slate leading-tight tracking-[-0.03em]">
-            Results that speak for themselves
-          </h2>
-          <p className="mt-4 text-brand-graphite text-base leading-[1.75]">
-            Local service businesses that replaced guesswork with connected systems.
-          </p>
-        </div>
-
-        {/* Testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {siteConfig.testimonials.map((t, i) => (
-            <article
-              key={i}
-              className="group relative bg-white rounded-2xl p-8 border border-brand-warmgray hover:border-brand-electric/30 transition-all duration-300 hover:-translate-y-1 cursor-default"
-              style={{
-                boxShadow:
-                  "0 1px 3px rgba(31,40,55,0.05), 0 4px 16px rgba(31,40,55,0.07)",
-              }}
-            >
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{ boxShadow: "0 8px 32px rgba(13,172,201,0.1)" }}
-              />
-
-              {/* Quote mark */}
+    <section className="bg-[#F0F6FF] border-y border-[#C8D6E5]/60">
+      {/* Stats strip */}
+      <div className="border-b border-[#C8D6E5]/60 bg-[#1E3A5F]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10 w-full">
+            {stats.map((s) => (
               <div
-                className="text-6xl leading-none text-brand-electric/20 font-serif mb-4 select-none"
-                aria-hidden="true"
+                key={s.label}
+                className="flex flex-col items-center text-center px-6 py-1"
               >
-                &ldquo;
+                <span className="font-display font-black text-2xl text-white tracking-tight">
+                  {s.value}
+                </span>
+                <span className="text-white/60 text-xs tracking-wide mt-0.5">
+                  {s.label}
+                </span>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-              {/* Quote text */}
-              <blockquote className="text-brand-slate/80 text-base leading-[1.75] mb-8 relative">
-                {t.quote}
-              </blockquote>
-
-              {/* Author */}
-              <footer className="flex items-center gap-3">
-                {/* Avatar */}
-                <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-brand-electric/20">
-                  <Image
-                    src={t.avatar}
-                    alt={t.name}
-                    width={44}
-                    height={44}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div>
-                  <p className="text-brand-slate text-sm font-semibold">{t.name}</p>
-                  <p className="text-brand-graphite text-xs">{t.title}</p>
-                </div>
-              </footer>
-            </article>
+      {/* Trust badges */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {badges.map((b) => (
+            <div
+              key={b.title}
+              className="flex flex-col items-center text-center gap-3 p-5 bg-white rounded-xl border border-[#C8D6E5]/50 shadow-[0_1px_3px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.06)]"
+            >
+              <div className="w-11 h-11 rounded-full bg-[#EBF3FF] flex items-center justify-center text-[#1A56DB]">
+                {b.icon}
+              </div>
+              <div>
+                <p className="font-display font-semibold text-[#1E3A5F] text-sm">
+                  {b.title}
+                </p>
+                <p className="text-[#64748B] text-xs mt-0.5 leading-snug">
+                  {b.sub}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* Note about testimonials */}
-        <p className="mt-8 text-center text-brand-graphite/50 text-xs">
-          Testimonials are representative of typical client feedback and will be replaced with verified reviews.
-        </p>
       </div>
     </section>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+  );
+}
+function StarIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+  );
+}
+function CheckIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+      <path d="m9 11 3 3L22 4"/>
+    </svg>
+  );
+}
+function KeyIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="7.5" cy="15.5" r="5.5"/>
+      <path d="m21 2-9.6 9.6"/>
+      <path d="m15.5 7.5 3 3L22 7l-3-3"/>
+    </svg>
   );
 }

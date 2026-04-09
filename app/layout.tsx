@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/config";
 
-const montserrat = Montserrat({
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-barlow",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600"],
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: siteConfig.meta.title,
   description: siteConfig.meta.description,
-  metadataBase: new URL("https://adaptiveautomate.com"),
+  metadataBase: new URL("https://donmikeauto.com"),
   openGraph: {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
@@ -42,7 +49,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={montserrat.variable}>
+    <html
+      lang="en"
+      className={`${barlow.variable} ${barlowCondensed.variable}`}
+    >
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
