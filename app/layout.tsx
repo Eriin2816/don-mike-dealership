@@ -20,18 +20,27 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   title: siteConfig.meta.title,
   description: siteConfig.meta.description,
-  metadataBase: new URL("https://donmikeauto.com"),
+  metadataBase: new URL("https://don-mike-dealership.vercel.app"),
   openGraph: {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     type: "website",
     locale: "en_US",
     siteName: siteConfig.business.name,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Don Mike Auto Dealership — Multi-Brand Vehicles in Gainesville, FL",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

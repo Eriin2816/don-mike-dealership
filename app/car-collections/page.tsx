@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Car Collections | Don Mike Auto Dealership",
     description:
       "Honda, Toyota, Mazda, GMC, and Mercedes-Benz — vehicles matched to Gainesville buyers.",
-    images: [{ url: "/hero-showroom.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Don Mike Auto Dealership — Car Collections" }],
   },
 };
 
