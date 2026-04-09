@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.business.name,
     images: [
       {
-        url: "https://don-mike-dealership.vercel.app/og-image.jpg",
+        url: "https://don-mike-dealership.vercel.app/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Don Mike Auto Dealership — Multi-Brand Vehicles in Gainesville, FL",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
-    images: ["https://don-mike-dealership.vercel.app/og-image.jpg"],
+    images: ["https://don-mike-dealership.vercel.app/opengraph-image"],
   },
   robots: {
     index: true,

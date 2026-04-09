@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Don Mike Auto Dealership | Gainesville, FL",
     description:
       "Find your perfect vehicle in Gainesville. Honda, Toyota, Mazda, GMC, and Mercedes-Benz — all in one place.",
-    images: [{ url: "https://don-mike-dealership.vercel.app/og-image.jpg", width: 1200, height: 630, alt: "Don Mike Auto Dealership — Gainesville, FL" }],
+    images: [{ url: "https://don-mike-dealership.vercel.app/opengraph-image", width: 1200, height: 630, alt: "Don Mike Auto Dealership — Gainesville, FL" }],
   },
 };
 
