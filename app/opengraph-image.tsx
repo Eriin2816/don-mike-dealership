@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { LOGO_BASE64 } from "@/lib/ogLogo";
 
 export const runtime = "edge";
 export const alt = "Don Mike Auto Dealership — Multi-Brand Vehicles in Gainesville, FL";
@@ -6,13 +7,6 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OgImage() {
-  // Fetch logo from public folder — works in both edge and Node runtimes
-  const logoRes = await fetch(
-    new URL("/og-logo.png", "https://don-mike-dealership.vercel.app")
-  );
-  const logoBuffer = await logoRes.arrayBuffer();
-  const logoBase64 = `data:image/png;base64,${Buffer.from(logoBuffer).toString("base64")}`;
-
   return new ImageResponse(
     (
       <div
@@ -78,20 +72,20 @@ export default async function OgImage() {
             textAlign: "center",
           }}
         >
-          {/* Logo */}
+          {/* Logo — embedded base64, no network call */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={logoBase64}
+            src={LOGO_BASE64}
             alt="Don Mike Logo"
-            width={120}
-            height={120}
-            style={{ objectFit: "contain", marginBottom: 28 }}
+            width={130}
+            height={130}
+            style={{ objectFit: "contain", marginBottom: 24 }}
           />
 
-          {/* Name */}
+          {/* Dealership name */}
           <div
             style={{
-              fontSize: 52,
+              fontSize: 54,
               fontWeight: 900,
               color: "#FFFFFF",
               letterSpacing: "-0.02em",
@@ -105,7 +99,7 @@ export default async function OgImage() {
           {/* Brands */}
           <div
             style={{
-              fontSize: 26,
+              fontSize: 24,
               fontWeight: 400,
               color: "rgba(255,255,255,0.75)",
               marginBottom: 32,
