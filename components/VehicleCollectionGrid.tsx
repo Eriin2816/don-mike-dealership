@@ -11,9 +11,10 @@ interface Vehicle {
   alt: string;
 }
 
-const brands: { name: string; vehicles: Vehicle[] }[] = [
+const brands: { name: string; slug: string; vehicles: Vehicle[] }[] = [
   {
     name: "Mazda",
+    slug: "mazda",
     vehicles: [
       {
         make: "Mazda",
@@ -39,6 +40,7 @@ const brands: { name: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "GMC",
+    slug: "gmc",
     vehicles: [
       {
         make: "GMC",
@@ -64,6 +66,7 @@ const brands: { name: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Honda",
+    slug: "honda",
     vehicles: [
       {
         make: "Honda",
@@ -89,6 +92,7 @@ const brands: { name: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Toyota",
+    slug: "toyota",
     vehicles: [
       {
         make: "Toyota",
@@ -114,6 +118,7 @@ const brands: { name: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Mercedes-Benz",
+    slug: "mercedes-benz",
     vehicles: [
       {
         make: "Mercedes-Benz",
@@ -151,6 +156,15 @@ export default function VehicleCollectionGrid() {
                 {brand.name}
               </h2>
               <div className="flex-1 h-px bg-[#E2E8F0]" />
+              <Link
+                href={`/car-collections/${brand.slug}`}
+                className="shrink-0 inline-flex items-center gap-1.5 text-[#1A56DB] hover:text-[#1547C0] text-sm font-semibold transition-colors duration-150"
+              >
+                View All {brand.name} Models
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </Link>
             </div>
 
             {/* Vehicle cards */}
@@ -158,11 +172,10 @@ export default function VehicleCollectionGrid() {
               {brand.vehicles.map((v) => (
                 <div
                   key={`${v.make}-${v.model}`}
-                  className="group bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden hover:shadow-[0_4px_32px_rgba(26,86,219,0.12)] hover:border-[#1A56DB]/25 transition-all duration-300"
+                  className="group bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden hover:shadow-[0_4px_32px_rgba(26,86,219,0.12)] hover:border-[#1A56DB]/25 transition-shadow transition-[border-color] duration-300"
                 >
-                  {/* Image */}
-                  <div className="relative overflow-hidden aspect-[16/9]">
-                    {/* TODO: Replace with actual inventory photo */}
+                  {/* Image — clicking navigates to brand page */}
+                  <Link href={`/car-collections/${brand.slug}`} className="block relative overflow-hidden aspect-[16/9]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={v.image}
@@ -173,7 +186,7 @@ export default function VehicleCollectionGrid() {
                     <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[#1E3A5F] text-xs font-semibold px-2.5 py-1 rounded-full border border-[#C8D6E5]/50">
                       {v.type}
                     </span>
-                  </div>
+                  </Link>
 
                   {/* Content */}
                   <div className="p-6">
