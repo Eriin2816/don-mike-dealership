@@ -40,7 +40,7 @@ const brands: { name: string; slug: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "GMC",
-    slug: "gmc",
+    slug: "brands",
     vehicles: [
       {
         make: "GMC",
@@ -66,7 +66,7 @@ const brands: { name: string; slug: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Honda",
-    slug: "honda",
+    slug: "brands",
     vehicles: [
       {
         make: "Honda",
@@ -92,7 +92,7 @@ const brands: { name: string; slug: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Toyota",
-    slug: "toyota",
+    slug: "brands",
     vehicles: [
       {
         make: "Toyota",
@@ -118,7 +118,7 @@ const brands: { name: string; slug: string; vehicles: Vehicle[] }[] = [
   },
   {
     name: "Mercedes-Benz",
-    slug: "mercedes-benz",
+    slug: "brands",
     vehicles: [
       {
         make: "Mercedes-Benz",
