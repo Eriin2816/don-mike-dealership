@@ -13,56 +13,6 @@ interface Vehicle {
 
 const brands: { name: string; vehicles: Vehicle[] }[] = [
   {
-    name: "Honda",
-    vehicles: [
-      {
-        make: "Honda",
-        model: "Accord",
-        type: "Sedan",
-        tagline: "The balanced choice",
-        summary: "Refined commuter performance with Honda's proven reliability. A Gainesville favorite for young professionals and commuters.",
-        highlights: ["Excellent fuel economy", "Available hybrid", "Spacious interior"],
-        image: "https://placehold.co/640x400/EBF3FF/1A56DB?text=Honda+Accord",
-        alt: "Honda Accord — swap with real inventory photo",
-      },
-      {
-        make: "Honda",
-        model: "CR-V",
-        type: "SUV",
-        tagline: "Florida families' top crossover",
-        summary: "Versatile, safe, and cargo-smart. The CR-V handles school runs, road trips, and everything between.",
-        highlights: ["5-star safety ratings", "Available AWD", "Honda Sensing standard"],
-        image: "https://placehold.co/640x400/EBF3FF/1A56DB?text=Honda+CR-V",
-        alt: "Honda CR-V — swap with real inventory photo",
-      },
-    ],
-  },
-  {
-    name: "Toyota",
-    vehicles: [
-      {
-        make: "Toyota",
-        model: "Camry",
-        type: "Sedan",
-        tagline: "Florida's dependable sedan",
-        summary: "Class-leading resale value, smooth ride, and long-term dependability that Gainesville commuters trust.",
-        highlights: ["Top resale value", "Available V6", "Toyota Safety Sense"],
-        image: "https://placehold.co/640x400/F0F6FF/1E3A5F?text=Toyota+Camry",
-        alt: "Toyota Camry — swap with real inventory photo",
-      },
-      {
-        make: "Toyota",
-        model: "RAV4",
-        type: "SUV",
-        tagline: "Adventure-ready crossover",
-        summary: "One of the best-selling crossovers in Florida. Rugged enough for weekends, fuel-smart enough for daily driving.",
-        highlights: ["Available hybrid", "Spacious cargo", "Off-road capable trim"],
-        image: "https://placehold.co/640x400/F0F6FF/1E3A5F?text=Toyota+RAV4",
-        alt: "Toyota RAV4 — swap with real inventory photo",
-      },
-    ],
-  },
-  {
     name: "Mazda",
     vehicles: [
       {
@@ -109,6 +59,56 @@ const brands: { name: string; vehicles: Vehicle[] }[] = [
         highlights: ["3-row seating", "Quiet cabin", "GMC Pro Safety Plus"],
         image: "https://placehold.co/640x400/F0F6FF/1E3A5F?text=GMC+Acadia",
         alt: "GMC Acadia — swap with real inventory photo",
+      },
+    ],
+  },
+  {
+    name: "Honda",
+    vehicles: [
+      {
+        make: "Honda",
+        model: "Accord",
+        type: "Sedan",
+        tagline: "The balanced choice",
+        summary: "Refined commuter performance with Honda's proven reliability. A Gainesville favorite for young professionals and commuters.",
+        highlights: ["Excellent fuel economy", "Available hybrid", "Spacious interior"],
+        image: "https://placehold.co/640x400/EBF3FF/1A56DB?text=Honda+Accord",
+        alt: "Honda Accord — swap with real inventory photo",
+      },
+      {
+        make: "Honda",
+        model: "CR-V",
+        type: "SUV",
+        tagline: "Florida families' top crossover",
+        summary: "Versatile, safe, and cargo-smart. The CR-V handles school runs, road trips, and everything between.",
+        highlights: ["5-star safety ratings", "Available AWD", "Honda Sensing standard"],
+        image: "https://placehold.co/640x400/EBF3FF/1A56DB?text=Honda+CR-V",
+        alt: "Honda CR-V — swap with real inventory photo",
+      },
+    ],
+  },
+  {
+    name: "Toyota",
+    vehicles: [
+      {
+        make: "Toyota",
+        model: "Camry",
+        type: "Sedan",
+        tagline: "Florida's dependable sedan",
+        summary: "Class-leading resale value, smooth ride, and long-term dependability that Gainesville commuters trust.",
+        highlights: ["Top resale value", "Available V6", "Toyota Safety Sense"],
+        image: "https://placehold.co/640x400/F0F6FF/1E3A5F?text=Toyota+Camry",
+        alt: "Toyota Camry — swap with real inventory photo",
+      },
+      {
+        make: "Toyota",
+        model: "RAV4",
+        type: "SUV",
+        tagline: "Adventure-ready crossover",
+        summary: "One of the best-selling crossovers in Florida. Rugged enough for weekends, fuel-smart enough for daily driving.",
+        highlights: ["Available hybrid", "Spacious cargo", "Off-road capable trim"],
+        image: "https://placehold.co/640x400/F0F6FF/1E3A5F?text=Toyota+RAV4",
+        alt: "Toyota RAV4 — swap with real inventory photo",
       },
     ],
   },
